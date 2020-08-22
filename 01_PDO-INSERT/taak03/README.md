@@ -4,8 +4,8 @@
 
 ## Uitleg
 
-Deze opdracht gaan we nog meer data toevoegen. Maar omdat te doen hebben we nog een databasetabel nodig.
-We gaan producten toevoegen aan de database via een formulier. Bij deze taak heb je kennis nodig die bij PHP Expert voorbij is gekomen.
+In deze opdracht gaan we nog meer data toevoegen. Maar omdat te doen hebben we nog een databasetabel nodig.
+We gaan __producten__ toevoegen aan de database via een formulier. Bij deze taak heb je kennis nodig die bij PHP Expert voorbij is gekomen.
 
 ## Leerdoelen
 
@@ -15,7 +15,7 @@ We gaan producten toevoegen aan de database via een formulier. Bij deze taak heb
 ## Opdracht
 
 > 1. Maak gebruik van de database `toolsforever` met PHPMyAdmin
-> 2. Maak een nieuwe databasetabel genaamd `products`
+> 2. Maak een nieuwe databasetabel genaamd `products` met PHPMyAdmin
 > 3. Voeg de volgende gegevens toe:
 >       - `id` (int:11),
 >       - `name` (varchar:60),

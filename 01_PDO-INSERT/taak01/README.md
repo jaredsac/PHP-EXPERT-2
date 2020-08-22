@@ -31,7 +31,7 @@ Bij zo'n formulier moet je bepalen welke __methode__ je gaat gebruiken. Is dat P
   opslaan als bookmark | geen bookmarking
   Niet gebruiken voor gevoelige data | gebruiken bij maken of update van data
 
-Dus als je goed gelezen hebt gaan we deze laatste vraag beantworden met `POST`-method
+Dus als je goed gelezen hebt gaan we _vraag 3_ beantwoorden met `POST`-method
 
 - Nu kun je een php-bestand gaan maken
 - formulier maken met html en css
@@ -45,6 +45,8 @@ De onderstaande code kun je gebruiken bij deze opdracht.
 $firstName = $_POST['form_firstname'];
 $lastName = $_POST['form_lastname'];
 
+
+// !! De onderstaande code voegt gebruikers toe en geen producten. Pas de code aan.!!
 $sql = "INSERT INTO users (firstname, lastname) VALUES (:ph_firstname , :ph_lastname)" ;//sql query
 //een ID slaan we niet op, deze wordt automatisch aangemaakt door MySQL
 $stmt = $db_conn->prepare($sql); //stuur naar mysql.

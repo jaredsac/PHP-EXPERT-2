@@ -2,15 +2,44 @@
 
 ## Gebruiker toevoegen (INSERT)
 
-## Uitleg
+### Uitleg
 
 In deze opdracht ga je data toevoegen aan een database halen met behulp van het PDO-object. Je weet uit de module PHP EXPERT 1 dat je eerst een connectie moet maken om daarna het object te gebruiken.
 
-Om data toe te voegen gebruiken we de volgende SQL statement:
+Stel je wilt gegevens toevoegen aan je database, dan neem je de volgende stappen:
 
-`INSERT INTO <tablename> (column1, column2, column2) VALUES (value1, value2, value3)`
+1. Welke database ga je gebruiken?
+2. Welke data wil je toevoegen?
+3. Hoe wil je de gebruiker van je applicatie dat laten doen?
 
-Stel je wilt een gebruiker toevoegen aan je database:
+#### vraag 1
+
+Ok, nu we dit weten gaan we eerst vraag 1 beantwoorden: welke database? Oke, stel we gaan verder met de database `toolsforever`. Als je dit weet dan kun je een database connectie maken. (check PHP-Expert PDO-SELECT taak01)
+
+#### vraag 2
+
+Welke data willen we gaan opslaan? Zeg nou eens dat we `gebruiker` informatie willen opslaan. Niet meteen complexe gegevens, maar gewoon een __voornaam__ en een __achternaam__. Dit zijn dus 2 stukjes data en dus twee verschillende kolommen in de database-tabel. Check je PHPMyadmin (database: toolsforever).
+
+
+#### vraag 3
+
+Vaak wordt een formulier `<form>` gebruikt om data dat is ingevuld op te slaan in een database. Je kunt ook andere manieren gebruiken maar wij gebruiken deze voor nu.
+
+Bij zo'n formulier moet je bepalen welke __methode__ je gaat gebruiken. Is dat POST of GET. Weet je de verschillen nog?
+
+  GET | POST
+  --|---|
+  opslaan als bookmark | geen bookmarking
+  Niet gebruiken voor gevoelige data | gebruiken bij maken of update van data
+
+Dus als je goed gelezen hebt gaan we deze laatste vraag beantworden met `POST`-method
+
+- Nu kun je een php-bestand gaan maken
+- formulier maken met html en css
+- php code schrijven om database connectie te maken
+- php code schrijven om data op te slaan in de database
+
+De onderstaande code kun je gebruiken bij deze opdracht.
 
 ```php
 //gegevens uit een formulier ophalen met de post method.
@@ -18,6 +47,7 @@ $firstName = $_POST['form_firstname'];
 $lastName = $_POST['form_lastname'];
 
 $sql = "INSERT INTO users (firstname, lastname) VALUES (:ph_firstname , :ph_lastname)" ;//sql query
+//een ID slaan we niet op, deze wordt automatisch aangemaakt door MySQL
 $stmt = $db_conn->prepare($sql); //stuur naar mysql.
 $stmt->bindParam(":ph_firstname", $firstName ); //verbind de waardes
 $stmt->bindParam(":ph_lastname", $lastName ); //verbind de waardes

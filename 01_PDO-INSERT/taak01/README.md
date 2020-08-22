@@ -20,7 +20,6 @@ Ok, nu we dit weten gaan we eerst vraag 1 beantwoorden: welke database? Oke, ste
 
 Welke data willen we gaan opslaan? Zeg nou eens dat we `gebruiker` informatie willen opslaan. Niet meteen complexe gegevens, maar gewoon een __voornaam__ en een __achternaam__. Dit zijn dus 2 stukjes data en dus twee verschillende kolommen in de database-tabel. Check je PHPMyadmin (database: toolsforever).
 
-
 #### vraag 3
 
 Vaak wordt een formulier `<form>` gebruikt om data dat is ingevuld op te slaan in een database. Je kunt ook andere manieren gebruiken maar wij gebruiken deze voor nu.

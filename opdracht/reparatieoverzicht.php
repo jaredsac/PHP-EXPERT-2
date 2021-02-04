@@ -7,7 +7,8 @@ session_start();
 
 
 
-$sql = "SELECT * FROM reparatie";
+$sql = "SELECT * FROM reparatie JOIN gebruikers ON gebruikers.id = reparatie.medewerker
+  JOIN fietsen on fietsen.id = reparatie.fiets";
 $statement = $db_conn->prepare($sql);
 $statement->execute();
 $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -118,7 +119,6 @@ $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
               <th>Fiets</th>
               <th>titel</th>
               <th>datum</th>
-              <th>tijdstip</th>
               <th>opmerking</th>
               <th>kosten</th>
               <th>Verwijder</th>
@@ -128,11 +128,10 @@ $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
           <tbody>
             <?php foreach($database_gegevens as $item):?>
             <tr>
-                <td><?php echo $item['Medewerker']?></td>
-                <td><?php echo $item['Fiets']?></td>
+                <td><?php echo $item['Voornaam'] ." " . $item['Achternaam']?></td>
+                <td><?php echo $item['Merk'] ." " . $item['FietsSoort'] ." " . $item['Kleur']?></td>
                 <td><?php echo $item['Titel']?></td>
                 <td><?php echo $item['Datum']?></td>
-                <td><?php echo $item['Tijdstip']?></td>
                 <td><?php echo $item['Opmerkingen']?></td>
                 <td><?php echo $item['Kosten']?></td>
                 <td>

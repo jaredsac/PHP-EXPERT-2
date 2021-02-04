@@ -6,23 +6,17 @@ require 'database.php';
 include 'header.php';
 
 
-$sql = "SELECT * FROM fietsen";
-$statement = $db_conn->prepare($sql);
-$statement->bindParam(":ph_id", $id);
-$statement->execute();
-$database_gegevens = $statement->fetch(PDO::FETCH_ASSOC);
 
-
-if(isset ($_POST['submit']) && $_POST['Titel'] && $_POST['OPmerkingen'] && $_POST['Kosten'] !=""){
+if(isset ($_POST['submit']) && $_POST['Titel'] && $_POST['Opmerkingen'] && $_POST['Kosten'] && $_POST['Datum'] !=""){
     $titel = $_POST['Titel'];
     $op = $_POST['Opmerkingen'];
     $kosten = $_POST['Kosten'];
     $datum = $_POST['Datum'];
 //UPDATE EEN WAARDE IN EEN DATABASE TABEL
-$sql = "INSERT INTO klussen (Titel, Opmerkingen, Kosten, Datum) VALUES (:ph_Titel, :ph_Opmerkingen, :ph_Kosten, :ph_Datum)" ;
+$sql = "INSERT INTO reparatie (Titel, Opmerkingen, Kosten, Datum) VALUES (:ph_Titel, :ph_Opmerkingen, :ph_Kosten, :ph_Datum)" ;
 $stmt = $db_conn->prepare($sql); //stuur naar mysql.
 $stmt->bindParam(":ph_Titel", $titel );
-$stmt->bindParam(":ph_Opmerkingem", $op );
+$stmt->bindParam(":ph_Opmerkingen", $op );
 $stmt->bindParam(":ph_Kosten", $kosten );
 $stmt->bindParam(":ph_Datum", $datum );
 $stmt->execute();

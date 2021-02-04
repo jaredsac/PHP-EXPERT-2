@@ -7,10 +7,11 @@ session_start();
 
 
 
-$sql = "SELECT * FROM fietsen";
+$sql = "SELECT * FROM fietsen JOIN gebruikers ON gebruikers.id = fietsen.eigenaar";
 $statement = $db_conn->prepare($sql);
 $statement->execute();
 $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 
@@ -126,7 +127,7 @@ $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
           <tbody>
             <?php foreach($database_gegevens as $items):?>
             <tr>
-                <td><?php echo $items['Eigenaar']?></td>
+                <td><?php echo $items['Voornaam'] ." " . $items['Achternaam']?></td>
                 <td><?php echo $items['Merk']?></td>
                 <td><?php echo $items['Model']?></td>
                 <td><?php echo $items['FietsSoort']?></td>

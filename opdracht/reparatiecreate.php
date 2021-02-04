@@ -1,31 +1,33 @@
-<?php
+<?php 
 
-session_start();
+  session_start();
 
 require 'database.php';
-include 'header.php';
-
-
 
 if(isset ($_POST['submit']) && $_POST['Titel'] && $_POST['Opmerkingen'] && $_POST['Kosten'] && $_POST['Datum'] !=""){
-    $titel = $_POST['Titel'];
-    $op = $_POST['Opmerkingen'];
-    $kosten = $_POST['Kosten'];
-    $datum = $_POST['Datum'];
-//UPDATE EEN WAARDE IN EEN DATABASE TABEL
-$sql = "INSERT INTO reparatie (Titel, Opmerkingen, Kosten, Datum) VALUES (:ph_Titel, :ph_Opmerkingen, :ph_Kosten, :ph_Datum)" ;
-$stmt = $db_conn->prepare($sql); //stuur naar mysql.
-$stmt->bindParam(":ph_Titel", $titel );
-$stmt->bindParam(":ph_Opmerkingen", $op );
-$stmt->bindParam(":ph_Kosten", $kosten );
-$stmt->bindParam(":ph_Datum", $datum );
-$stmt->execute();
-header('location: reparatieoverzicht.php');
+    
+    
+    $Titel = $_POST['Titel'];
+    $Opmerkingen = $_POST['Opmerkingen'];
+    $Kosten = $_POST['Kosten'];
+    $Datum = $_POST['Datum'];
+    
+    //ZET WAARDE IN DATABASE
+ $sql = "INSERT INTO reparatie (Titel, Opmerkingen, Email, Datum ) 
+        VALUES (:ph_Titel, :ph_Opmerkingen, :ph_Kosten, :ph_Datum )" ;
+ $stmt = $db_conn->prepare($sql); //stuur naar mysql.
+ $stmt->bindParam(":ph_Titel", $Titel );
+ $stmt->bindParam(":ph_Opmerkingen", $Opmerkingen );
+ $stmt->bindParam(":ph_Kosten", $Kosten );
+ $stmt->bindParam(":ph_Datum", $Datum );
+ $stmt->execute();
+ header('location: reparatieoverzicht.php');
 }
 
+
+
 ?>
-
-
+<?php include 'header.php';?>
 
 <!doctype html>
 <html lang="en">
@@ -69,8 +71,8 @@ header('location: reparatieoverzicht.php');
   </head>
   <body>
     
-<header class="navbar navbar-dark sticky-top bg-warning flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="reparatieoverzicht.php">fietsenmaker Snelle Jelle</a>
+<header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" Style="background-color: #3c1414;">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="klusOpdracht_index.php">Klusbedrijf Handige Mannen</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -85,21 +87,22 @@ header('location: reparatieoverzicht.php');
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
-        <h1 class="h2">Reparatie Aanmaken</h1>
+        <h1 class="h2">Voeg Klant Toe</h1>
         
       </div>
 
       <div class="container">
     <form action="" method="post">
         <div class="col-6"></div>
-        <input type="text" name="Titel" class="form-control" placeholder = "Titel" >
-        <input type="text" name="Opmerkingen" class="form-control" placeholder = "Opmerkingen" >
-        <input type="text" name="Kosten" class="form-control" placeholder = "Kosten" >
-        <input type="text" name="Datum" class="form-control" placeholder = "Datum">
+        <input type="text" name="Titel" class="form-control" placeholder="Titel">
+        <input type="text" name="Opmerkingen" class="form-control" placeholder="Opmerkingen">
+        <input type="text" name="Kosten" class="form-control" placeholder="Kosten">
+        <input type="text" name="Datum" class="form-control" placeholder="Datum">
         <button type="submit" class=" btn btn-info  mt-3" name="submit">opslaan!</button>
-    </form>
-  </div>
       </div>
+    </form>
+    </div>
+        </div>
     </main>
   </div>
 </div>

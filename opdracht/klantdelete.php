@@ -1,4 +1,4 @@
-<?php
+<<?php
 require 'database.php';
 
 
@@ -9,5 +9,5 @@ $stmt = $db_conn->prepare($sql); //stuur naar mysql.
 $stmt->bindParam(":ph_ID", $id );
 $stmt->execute();
 
-header('location: Klantoverzicht.php');
+header('location: klantoverzicht.php');
 ?>

@@ -4,24 +4,32 @@
 
 require 'database.php';
 
+$sql = "SELECT * FROM fietsen";
+$statement = $db_conn->prepare($sql);
+$statement->execute();
+$database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 if(isset ($_POST['submit']) && $_POST['Titel'] && $_POST['Opmerkingen'] && $_POST['Kosten'] && $_POST['Datum'] !=""){
     
     
+    $Medewerker = $_POST['Medewerker'];
     $Titel = $_POST['Titel'];
     $Opmerkingen = $_POST['Opmerkingen'];
     $Kosten = $_POST['Kosten'];
     $Datum = $_POST['Datum'];
     
     //ZET WAARDE IN DATABASE
- $sql = "INSERT INTO reparatie (Titel, Opmerkingen, Email, Datum ) 
-        VALUES (:ph_Titel, :ph_Opmerkingen, :ph_Kosten, :ph_Datum )" ;
+ $sql = "INSERT INTO reparatie (Titel, Opmerkingen, Kosten, Datum ) 
+        VALUES (:ph_Medewerker, :ph_Titel, :ph_Opmerkingen, :ph_Kosten, :ph_Datum )" ;
  $stmt = $db_conn->prepare($sql); //stuur naar mysql.
+ $smt = $db_conn->prepare('select Fietsen_id From Fietsen');
  $stmt->bindParam(":ph_Titel", $Titel );
+ $stmt->bindParam(":ph_Medewerker", $Medewerker );
  $stmt->bindParam(":ph_Opmerkingen", $Opmerkingen );
  $stmt->bindParam(":ph_Kosten", $Kosten );
  $stmt->bindParam(":ph_Datum", $Datum );
  $stmt->execute();
- header('location: reparatieoverzicht.php');
+ //header('location: reparatieoverzicht.php');
 }
 
 
@@ -72,14 +80,14 @@ if(isset ($_POST['submit']) && $_POST['Titel'] && $_POST['Opmerkingen'] && $_POS
   <body>
     
 <header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" Style="background-color: #3c1414;">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="klusOpdracht_index.php">Klusbedrijf Handige Mannen</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="reparatieoverzicht.php">Fietsenmaker Snelle Jelle</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-    <a class="nav-link" href="inlogscherm.php">Sign out</a>
+    <a class="nav-link" href="inlog.php">Sign out</a>
     </li>
   </ul>
 </header>
@@ -87,13 +95,19 @@ if(isset ($_POST['submit']) && $_POST['Titel'] && $_POST['Opmerkingen'] && $_POS
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
-        <h1 class="h2">Voeg Klant Toe</h1>
+        <h1 class="h2">Voeg</h1>
         
       </div>
 
       <div class="container">
     <form action="" method="post">
         <div class="col-6"></div>
+        <input type="hidden" name="Medewerker" class="form-control" value="<?php echo  $_SESSION['ID'] ?? 1?>">
+        <select name="Fietsen" id="fietsen">
+          <?php foreach($database_gegevens as $row):?>
+            <option><?$row["fietsen"]?></option>
+          <?php endforeach ?>
+        </select>
         <input type="text" name="Titel" class="form-control" placeholder="Titel">
         <input type="text" name="Opmerkingen" class="form-control" placeholder="Opmerkingen">
         <input type="text" name="Kosten" class="form-control" placeholder="Kosten">

@@ -25,6 +25,7 @@ if(isset($_POST['form_login'])){
           session_start();
 
           $_SESSION['Voornaam'] = $database_gegevens['Voornaam'];
+          $_SESSION['ID'] = $database_gegevens['ID'];
           
             
           

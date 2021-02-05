@@ -22,7 +22,7 @@ if(isset ($_POST['submit']) && $_POST['Titel'] && $_POST['Opmerkingen'] && $_POS
  $sql = "INSERT INTO reparatie (Titel, Opmerkingen, Kosten, Datum ) 
         VALUES (:ph_Medewerker, :ph_Titel, :ph_Opmerkingen, :ph_Kosten, :ph_Datum )" ;
  $stmt = $db_conn->prepare($sql); //stuur naar mysql.
- $smt = $db_conn->prepare('select Fietsen_id From Fietsen');
+ $stmt = $db_conn->prepare('select Fietsen_id From Fietsen');
  $stmt->bindParam(":ph_Titel", $Titel );
  $stmt->bindParam(":ph_Medewerker", $Medewerker );
  $stmt->bindParam(":ph_Opmerkingen", $Opmerkingen );

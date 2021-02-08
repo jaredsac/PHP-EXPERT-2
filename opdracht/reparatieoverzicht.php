@@ -128,8 +128,8 @@ $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
           <tbody>
             <?php foreach($database_gegevens as $item):?>
             <tr>
-                <td><?php echo $item['Voornaam'] ." " . $item['Achternaam']?></td>
-                <td><?php echo $item['Merk'] ." " . $item['FietsSoort'] ." " . $item['Kleur']?></td>
+                <td><?php echo $item['Voornaam']?></td>
+                <td><?php echo $item['FietsSoort']?></td>
                 <td><?php echo $item['Titel']?></td>
                 <td><?php echo $item['Datum']?></td>
                 <td><?php echo $item['Opmerkingen']?></td>

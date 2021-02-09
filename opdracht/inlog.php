@@ -34,7 +34,7 @@ if(isset($_POST['form_login'])){
         if($database_gegevens['Rol'] == "klant"){
           header('location: klant_reparatie.php');
         }else{
-          header('location: klantoverzicht.php');
+          header('location: reparatieoverzicht.php');
         }
   }
  

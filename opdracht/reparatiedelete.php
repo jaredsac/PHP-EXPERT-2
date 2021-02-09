@@ -7,7 +7,7 @@ var_dump($_GET);
 $sql = "DELETE FROM reparatie WHERE ReparatieID = :ph_ReparatieID";
 $stmt = $db_conn->prepare($sql); //stuur naar mysql.
 $stmt->bindParam(":ph_ReparatieID", $id );
-$stmt->execute();
 
-//header('location: reparatieoverzicht.php');
+var_dump($stmt->execute());
+header('location: reparatieoverzicht.php');
 ?>

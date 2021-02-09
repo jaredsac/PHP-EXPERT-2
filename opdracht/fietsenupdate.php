@@ -22,14 +22,14 @@ if(isset ($_POST['submit']) && $_POST['Merk'] && $_POST['Model'] && $_POST['Fiet
     $soortrem = $_POST['SoortRem'];
 //UPDATE EEN WAARDE IN EEN DATABASE TABEL
 $sql = "UPDATE fietsen SET Merk = :ph_Merk, Model = :ph_Model,
-FietsSoort = :ph_FietsSoort, Kleur = :ph_Kleur, SoortRem = :ph_SoortRem WHERE ID = :ph_id ";
+FietsSoort = :ph_FietsSoort, Kleur = :ph_Kleur, SoortRem = :ph_SoortRem WHERE FietsID = :ph_FietsID ";
 $stmt = $db_conn->prepare($sql); //stuur naar mysql.
 $stmt->bindParam(":ph_Merk", $merk );
 $stmt->bindParam(":ph_Model", $model );
 $stmt->bindParam(":ph_FietsSoort", $type );
 $stmt->bindParam(":ph_Kleur", $kleur );
 $stmt->bindParam(":ph_SoortRem", $soortrem );
-$stmt->bindParam(":ph_id", $id );
+$stmt->bindParam(":ph_FietsID", $id );
 $stmt->execute();
 header('location: fietsenoverzicht.php');
 }
@@ -80,7 +80,7 @@ header('location: fietsenoverzicht.php');
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-warning flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="klusOpdracht_index.php">Fietesenmaker Snelle Jelle</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="fietsenoverzicht.php">Fietesenmaker Snelle Jelle</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -8,7 +8,7 @@ session_start();
 
 
 $sql = "SELECT * FROM reparatie JOIN gebruikers ON gebruikers.id = reparatie.medewerker
-JOIN fietsen on fietsen.id = reparatie.fiets";
+JOIN fietsen on fietsen.Fietsid = reparatie.fiets";
 $statement = $db_conn->prepare($sql);
 $statement->execute();
 $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);

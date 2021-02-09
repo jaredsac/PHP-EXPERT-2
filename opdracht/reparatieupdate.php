@@ -7,9 +7,9 @@ include 'header.php';
 
 
 $id=$_GET['id'];
-$sql = "SELECT * FROM reparatie WHERE ID = :ph_id";
+$sql = "SELECT * FROM reparatie WHERE ReparatieID = :ph_ReparatieID";
 $statement = $db_conn->prepare($sql);
-$statement->bindParam(":ph_id", $id);
+$statement->bindParam(":ph_ReparatieID", $id);
 $statement->execute();
 $database_gegevens = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -22,13 +22,13 @@ if(isset ($_POST['submit']) && $_POST['Titel'] && $_POST['Opmerkingen'] && $_POS
     $medewerker = $_POST['Mederwerker'];
 //UPDATE EEN WAARDE IN EEN DATABASE TABEL
 $sql = "UPDATE reparatie SET Titel = :ph_Titel, Opmerkingen = :ph_Opmerkingen,
-Kosten = :ph_Kosten, Datum = :ph_Datum WHERE ID = :ph_id ";
+Kosten = :ph_Kosten, Datum = :ph_Datum WHERE ReparatieID = :ph_ReparatieID ";
 $stmt = $db_conn->prepare($sql); //stuur naar mysql.
 $stmt->bindParam(":ph_Titel", $titel );
 $stmt->bindParam(":ph_Opmerkingen", $opmerking );
 $stmt->bindParam(":ph_Kosten", $kosten );
 $stmt->bindParam(":ph_Datum", $datum );
-$stmt->bindParam(":ph_id", $id );
+$stmt->bindParam(":ph_ReparatieID", $id );
 $stmt->execute();
 header('location: reparatieoverzicht.php');
 }
@@ -79,7 +79,7 @@ header('location: reparatieoverzicht.php');
   <body>
     
 <header class="navbar navbar-dark sticky-top bg-warning flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Fietesenmaker Snelle Jelle</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="reparatieoverzicht.php">Fietesenmaker Snelle Jelle</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

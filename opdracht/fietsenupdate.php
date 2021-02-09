@@ -7,9 +7,9 @@ include 'header.php';
 
 
 $id=$_GET['id'];
-$sql = "SELECT * FROM fietsen WHERE ID = :ph_id";
+$sql = "SELECT * FROM fietsen WHERE FietsID = :ph_FietsID";
 $statement = $db_conn->prepare($sql);
-$statement->bindParam(":ph_id", $id);
+$statement->bindParam(":ph_FietsID", $id);
 $statement->execute();
 $database_gegevens = $statement->fetch(PDO::FETCH_ASSOC);
 

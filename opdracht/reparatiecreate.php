@@ -109,7 +109,7 @@ if(isset ($_POST['submit']) && $_POST['Medewerker'] && $_POST['Fietsen'] && $_PO
         <input type="hidden" name="Medewerker" class="form-control" value="<?php echo  $_SESSION['ID'] ?? 1?>">
         <select name="Fietsen" id="Fietsen">
           <?php foreach ($database_gegevens as $row): ?>
-            <option value="<?=$row["ID"]?>"><?=$row["FietsSoort"]?></option>
+            <option value="<?=$row["FietsID"]?>"><?=$row["FietsSoort"]?></option>
           <?php endforeach ?>
         </select>
         <input type="text" name="Titel" class="form-control" placeholder="Titel">

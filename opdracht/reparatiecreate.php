@@ -21,7 +21,6 @@ if(isset ($_POST['submit']) && $_POST['Medewerker'] && $_POST['Fietsen'] && $_PO
     $Opmerkingen = $_POST['Opmerkingen'];
     $Kosten = $_POST['Kosten'];
     $Datum = $_POST['Datum'];
-    var_dump($_POST);
     //ZET WAARDE IN DATABASE
  $sql = "INSERT INTO reparatie (Medewerker, Fiets, Titel, Opmerkingen, Kosten, Datum ) 
         VALUES (:ph_Medewerker, :ph_Fietsen, :ph_Titel, :ph_Opmerkingen, :ph_Kosten, :ph_Datum )" ;
@@ -34,7 +33,7 @@ if(isset ($_POST['submit']) && $_POST['Medewerker'] && $_POST['Fietsen'] && $_PO
  $stmt->bindParam(":ph_Datum", $Datum );
  $stmt->execute();
 
- //header('location: reparatieoverzicht.php');
+header('location: reparatieoverzicht.php');
 }
 
 

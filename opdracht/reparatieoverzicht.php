@@ -12,6 +12,9 @@ $sql = "SELECT * FROM reparatie JOIN gebruikers ON gebruikers.id = reparatie.med
 $statement = $db_conn->prepare($sql);
 $statement->execute();
 $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+print_r($database_gegevens);
 ?>
 
 
@@ -135,10 +138,10 @@ $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
                 <td><?php echo $item['Opmerkingen']?></td>
                 <td><?php echo $item['Kosten']?></td>
                 <td>
-                <a href="reparatiedelete.php?id=<?php echo $item['ID']?>">DELETE</a>
+                <a href="reparatiedelete.php?id=<?php echo $item['ReparatieID']?>">DELETE</a>
                 </td>
-                <td>
-                <a href="reparatieupdate.php?id=<?php echo $item['ID']?>">UPDATE</a>
+                <td>  
+                <a href="reparatieupdate.php?id=<?php echo $item['ReparatieID']?>">UPDATE</a>
                 </td>
             </tr>
             <?php endforeach;?>

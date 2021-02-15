@@ -134,10 +134,10 @@ $database_gegevens = $statement->fetchAll(PDO::FETCH_ASSOC);
                 <td><?php echo $items['Kleur']?></td>
                 <td><?php echo $items['SoortRem']?></td>
                 <td>
-                <a href="fietsendelete.php?id=<?php echo $items['ID']?>">DELETE</a>
+                <a href="fietsendelete.php?id=<?php echo $items['FietsID']?>">DELETE</a>
                 </td>
                 <td>
-                <a href="fietsenupdate.php?id=<?php echo $items['ID']?>">UPDATE</a>
+                <a href="fietsenupdate.php?id=<?php echo $items['FietsID']?>">UPDATE</a>
                 </td>
             </tr>
             <?php endforeach;?>

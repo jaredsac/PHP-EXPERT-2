@@ -20,9 +20,9 @@ if(isset ($_POST['submit']) && $_POST['Merk'] && $_POST['Model'] && $_POST['Fiet
     $type = $_POST['FietsSoort'];
     $kleur = $_POST['Kleur'];
     $soortrem = $_POST['SoortRem'];
-//UPDATE EEN WAARDE IN EEN DATABASE TABEL
+
 $sql = "UPDATE fietsen SET Merk = :ph_Merk, Model = :ph_Model,
-FietsSoort = :ph_FietsSoort, Kleur = :ph_Kleur, SoortRem = :ph_SoortRem WHERE FietsID = :ph_FietsID ";
+    FietsSoort = :ph_FietsSoort, Kleur = :ph_Kleur, SoortRem = :ph_SoortRem WHERE FietsID = :ph_FietsID ";
 $stmt = $db_conn->prepare($sql); //stuur naar mysql.
 $stmt->bindParam(":ph_Merk", $merk );
 $stmt->bindParam(":ph_Model", $model );
